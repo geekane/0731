@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 // 中间件
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com'], // 允许前端应用的域名
+  origin: ['http://localhost:3000', 'http://localhost:3003', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com/'], // 允许前端应用的域名
   credentials: true
 }));
 
@@ -296,6 +296,96 @@ app.post('/api/auth/login', async (req, res) => {
         message: '登录失败，请稍后重试'
       });
     }
+  }
+});
+
+// 获取门店列表接口
+app.get('/api/stores', async (req, res) => {
+  try {
+    console.log('接收到获取门店列表请求');
+    
+    // 从飞书多维表格获取数据
+    const records = await feishuService.getStoreRecords();
+    console.log('获取到门店记录:', records);
+    
+    // 转换数据格式
+    const stores = records.map(record => ({
+      id: record.record_id,
+      name: record.fields['门店名称'] || '未知门店'
+    }));
+    
+    console.log('转换后的门店数据:', stores);
+    res.json(stores);
+  } catch (error) {
+    console.error('获取门店列表时出错:', error);
+    // 出错时返回模拟数据
+    const mockStores = [
+      { id: 1, name: '北京朝阳门店' },
+      { id: 2, name: '上海浦东门店' },
+      { id: 3, name: '广州天河门店' },
+      { id: 4, name: '深圳南山门店' }
+    ];
+    res.json(mockStores);
+  }
+});
+
+// 获取查询选项列表接口
+app.get('/api/queries', async (req, res) => {
+  try {
+    console.log('接收到获取查询选项列表请求');
+    
+    // 返回固定的查询选项列表
+    const queries = [
+      '销售额分析',
+      '客流统计',
+      '商品销售排行',
+      '客单价分析',
+      '时段分析',
+      '员工绩效',
+      '库存状况',
+      '促销效果'
+    ];
+    
+    console.log('返回查询选项:', queries);
+    res.json(queries);
+  } catch (error) {
+    console.error('获取查询选项列表时出错:', error);
+    // 出错时返回模拟数据
+    const mockQueries = [
+      '销售额分析',
+      '客流统计',
+      '商品销售排行'
+    ];
+    res.json(mockQueries);
+  }
+});
+
+// 分析查询接口
+app.post('/api/analyze', async (req, res) => {
+  try {
+    console.log('接收到分析查询请求:', req.body);
+    
+    const { storeId, storeName, query } = req.body;
+    
+    // 模拟分析结果
+    const mockResults = {
+      '销售额分析': `# ${storeName} 销售额分析\n\n## 总体情况\n本月销售额为 **¥125,680**，环比增长 **12.5%**。\n\n## 详细数据\n- 日均销售额: ¥4,189\n- 最高单日销售额: ¥6,540\n- 最低单日销售额: ¥2,890\n\n## 趋势分析\n销售额呈现稳步增长趋势，预计下月将继续保持增长。`,
+      '客流统计': `# ${storeName} 客流统计\n\n## 总体情况\n本月客流量为 **8,542人次**，环比增长 **8.3%**。\n\n## 详细数据\n- 日均客流量: 285人次\n- 最高单日客流量: 420人次\n- 最低单日客流量: 180人次\n\n## 峰值分析\n周末客流量明显高于工作日，建议在周末增加人手。`,
+      '商品销售排行': `# ${storeName} 商品销售排行\n\n## TOP 5 商品\n1. **游戏充值卡** - 销售额: ¥32,560\n2. **饮料小吃** - 销售额: ¥28,420\n3. **周边商品** - 销售额: ¥21,780\n4. **会员卡** - 销售额: ¥18,960\n5. **设备时长** - 销售额: ¥15,320\n\n## 分析\n游戏充值卡和饮料小吃是主要收入来源，建议加强这两类商品的推广。`
+    };
+    
+    // 获取对应的分析结果，如果没有则使用默认结果
+    const result = mockResults[query] || `# ${storeName} ${query}\n\n暂无详细分析数据，请稍后重试。`;
+    
+    console.log('返回分析结果');
+    res.json({
+      content: result
+    });
+  } catch (error) {
+    console.error('分析查询时出错:', error);
+    res.status(500).json({
+      content: '# 分析失败\n\n抱歉，分析过程中出现错误，请稍后重试。'
+    });
   }
 });
 
