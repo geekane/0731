@@ -1,0 +1,36 @@
+name: Build and Push Backend Docker Image
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'backend/**'
+
+jobs:
+  # 定义一个任务，就叫“构建并推送”
+  build-and-push:
+    name: Build and Push Docker Image
+    # 在一台最新的 Ubuntu 虚拟机上运行这个任务
+    runs-on: ubuntu-latest 
+
+    steps:
+      # 第1步：把你的代码从 GitHub 仓库下载到虚拟机上
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 第2步：登录到 Docker Hub
+      # 这里会用到你后面设置的秘密信息
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 第3步：构建 Docker 镜像并推送到 Docker Hub
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend  # 指定 Dockerfile 在 backend 文件夹里
+          push: true          # 表示要推送到仓库
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-backend-app:latest # 给你的镜像起个名字，比如 "你的用户名/应用名:latest"
