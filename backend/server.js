@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 // 中间件
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3003', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com/'], // 允许前端应用的域名
+  origin: ['http://localhost:3000', 'http://localhost:3003', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com', 'https://vakkrvxkxeee.us-east-1.clawcloudrun.com/', 'https://jcwdemotest.pages.dev'], // 允许前端应用的域名
   credentials: true
 }));
 
