@@ -1,0 +1,134 @@
+// 字体样式和排版规范
+
+// 字体族
+$font-family-base: "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+// 字体大小
+$font-size-h1: 48rpx;  // 主标题
+$font-size-h2: 40rpx;  // 副标题
+$font-size-h3: 36rpx;  // 章节标题
+$font-size-body: 30rpx; // 正文
+$font-size-sub: 28rpx;  // 辅助文本
+$font-size-btn: 30rpx;  // 按钮文字
+$font-size-caption: 24rpx; // 说明文字
+
+// 字体字重
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 行高
+$line-height-tight: 1.2;
+$line-height-snug: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+
+// 文字颜色
+$text-color-primary: #ffffff;     // 主要文字 - 白色
+$text-color-secondary: #cccccc;   // 次要文字 - 银灰色
+$text-color-tertiary: #999999;    // 辅助文字 - 深灰色
+$text-color-link: #ff0000;        // 链接文字 - 红色
+$text-color-error: #ff0000;       // 错误文字 - 红色
+
+// 文字样式类
+.text-h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+.text-h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.text-h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+}
+
+.text-body {
+  font-size: $font-size-body;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-relaxed;
+}
+
+.text-sub {
+  font-size: $font-size-sub;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: $text-color-secondary;
+}
+
+.text-btn {
+  font-size: $font-size-btn;
+  font-weight: $font-weight-medium;
+}
+
+.text-caption {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: $text-color-tertiary;
+}
+
+// 文字颜色类
+.text-primary {
+  color: $text-color-primary;
+}
+
+.text-secondary {
+  color: $text-color-secondary;
+}
+
+.text-tertiary {
+  color: $text-color-tertiary;
+}
+
+.text-link {
+  color: $text-color-link;
+}
+
+.text-error {
+  color: $text-color-error;
+}
+
+// 文字对齐类
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// 文字装饰类
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+// 文字转换类
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}

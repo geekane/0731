@@ -1,0 +1,145 @@
+// 全局样式变量定义
+
+// 导入动画样式
+@import './animations.scss';
+
+// ==================== 色彩系统 ====================
+// 主色 (60%) - 用于大面积背景和主要UI模块
+$primary-color: #e53935;         // 柔和的红色，作为品牌主色
+$primary-light: #ffccbc;        // 主色的浅色调，用于高亮
+$primary-dark: #ac1900;         // 主色的深色调，用于悬停和激活状态
+
+// 辅助色 (30%) - 用于次要组件，如信息卡片、非关键按钮
+$secondary-color: #424242;      // 深灰色，作为辅助色
+$secondary-light: #6d6d6d;      // 辅助色的浅色调
+$secondary-dark: #1b1b1b;       // 辅助色的深色调
+
+// 点缀色 (10%) - 用于吸引用户注意力的"高亮色"
+$accent-color: #ffc107;          // 琥珀色，作为点缀色
+$accent-light: #fff350;          // 点缀色的浅色调
+$accent-dark: #c79100;           // 点缀色的深色调
+
+// 背景色系
+$bg-primary: #121212;            // 主背景色
+$bg-secondary: #1e1e1e;         // 次要背景色
+$bg-tertiary: #2a2a2a;           // 三级背景色
+
+// 文字色系
+$text-primary: #ffffff;          // 主要文字
+$text-secondary: #f0f0f0;        // 次要文字 (更亮)
+$text-tertiary: #d0d0d0;         // 三级文字 (更亮)
+$text-disabled: #a0a0a0;        // 禁用文字 (更亮)
+
+// 状态色系
+$success-color: #4caf50;         // 成功色
+$warning-color: #ff9800;         // 警告色
+$error-color: #f44336;           // 错误色
+$info-color: #2196f3;            // 信息色
+
+// 边框和分割线
+$border-color: #333333;          // 边框颜色
+$divider-color: #424242;         // 分割线颜色
+
+// ==================== 排版系统 ====================
+// 字号系统 (rpx)
+$font-size-h1: 48rpx;            // H1标题
+$font-size-h2: 40rpx;            // H2标题
+$font-size-h3: 36rpx;            // H3标题
+$font-size-body: 30rpx;          // 正文
+$font-size-subtitle: 28rpx;      // 辅助文本
+$font-size-caption: 24rpx;       // 说明文字
+$font-size-button: 30rpx;        // 按钮文字
+
+// 字重系统
+$font-weight-light: 300;          // 细体(慎用)
+$font-weight-regular: 400;       // 常规
+$font-weight-medium: 500;         // 中等
+$font-weight-semibold: 600;       // 半粗体
+$font-weight-bold: 700;          // 粗体
+
+// 行高系统
+$line-height-tight: 1.2;         // 紧凑行高
+$line-height-snug: 1.375;        // 适中行高
+$line-height-normal: 1.5;         // 正常行高
+$line-height-relaxed: 1.625;     // 宽松行高
+
+// 字间距
+$letter-spacing-tight: -0.025em;  // 紧凑字间距
+$letter-spacing-normal: 0;        // 正常字间距
+$letter-spacing-wide: 0.025em;   // 宽松字间距
+
+// ==================== 间距系统 ====================
+// 基础间距单位 (rpx)
+$spacing-0: 0;                   // 无间距
+$spacing-1: 4rpx;                // 4px - 最小间距
+$spacing-2: 8rpx;                // 8px - 极小间距
+$spacing-3: 12rpx;               // 12px - 小间距
+$spacing-4: 16rpx;               // 16px - 标准间距
+$spacing-5: 20rpx;               // 20px - 中等间距
+$spacing-6: 24rpx;               // 24px - 大间距
+$spacing-8: 32rpx;               // 32px - 特大间距
+$spacing-10: 40rpx;              // 40px - 超大间距
+$spacing-12: 48rpx;              // 48px - 极大间距
+$spacing-16: 64rpx;              // 64px - 最大间距
+
+// 宏观间距 (组件之间)
+$macro-spacing-xs: $spacing-4;    // 组件间极小间距
+$macro-spacing-sm: $spacing-6;    // 组件间小间距
+$macro-spacing-md: $spacing-8;    // 组件间中等间距
+$macro-spacing-lg: $spacing-10;   // 组件间大间距
+$macro-spacing-xl: $spacing-12;   // 组件间特大间距
+
+// 微观间距 (组件内部)
+$micro-spacing-xs: $spacing-1;    // 组件内部极小间距
+$micro-spacing-sm: $spacing-2;    // 组件内部小间距
+$micro-spacing-md: $spacing-3;    // 组件内部中等间距
+$micro-spacing-lg: $spacing-4;    // 组件内部大间距
+
+// ==================== 圆角系统 ====================
+$border-radius-none: 0;          // 无圆角
+$border-radius-sm: 4rpx;         // 小圆角
+$border-radius-md: 8rpx;         // 中圆角
+$border-radius-lg: 12rpx;        // 大圆角
+$border-radius-xl: 16rpx;        // 特大圆角
+$border-radius-2xl: 20rpx;       // 超大圆角
+$border-radius-full: 9999rpx;    // 完全圆角
+
+// ==================== 阴影系统 ====================
+$shadow-sm: 0 1rpx 2rpx 0 rgba(0, 0, 0, 0.05);           // 小阴影
+$shadow-md: 0 4rpx 6rpx -1rpx rgba(0, 0, 0, 0.1),
+             0 2rpx 4rpx -1rpx rgba(0, 0, 0, 0.06);      // 中阴影
+$shadow-lg: 0 10rpx 15rpx -3rpx rgba(0, 0, 0, 0.1),
+             0 4rpx 6rpx -2rpx rgba(0, 0, 0, 0.05);     // 大阴影
+$shadow-xl: 0 20rpx 25rpx -5rpx rgba(0, 0, 0, 0.1),
+             0 10rpx 10rpx -5rpx rgba(0, 0, 0, 0.04);    // 特大阴影
+
+// ==================== 动画系统 ====================
+// 过渡时间
+$transition-fast: 150ms;          // 快速过渡
+$transition-normal: 200ms;        // 正常过渡
+$transition-slow: 300ms;          // 慢速过渡
+
+// 缓动函数
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);  // 标准缓动
+$ease-out: cubic-bezier(0, 0, 0.2, 1);       // 缓出
+$ease-in: cubic-bezier(0.4, 0, 1, 1);         // 缓入
+
+// ==================== 兼容性变量 ====================
+// 保持向后兼容的变量名
+$dark-bg: $bg-primary;           // 深邃黑 - 主背景色
+$primary-red: $primary-color;     // 炽热红 - 主色调
+$secondary-gray: $text-secondary; // 银灰 - 文字和图标色
+$card-bg: $bg-tertiary;          // 卡片背景色
+$list-item-bg: $bg-secondary;    // 列表项背景色
+$text-white: $text-primary;      // 白色文字
+$text-gray: $text-secondary;     // 银灰色文字
+$text-dark-gray: $text-tertiary; // 深灰色文字
+$font-size-large: $font-size-h1; // 大号字体
+$font-size-medium: $font-size-body; // 中号字体
+$font-size-small: $font-size-caption; // 小号字体
+$border-radius-small: $border-radius-sm; // 小圆角
+$border-radius-medium: $border-radius-md; // 中圆角
+$list-item-height: 112rpx;       // 列表项高度
+$button-height: 96rpx;           // 按钮高度
+$transition-duration: $transition-normal; // 过渡动画时间
+$exit-button-duration: $transition-normal; // 退出按钮动画时间
