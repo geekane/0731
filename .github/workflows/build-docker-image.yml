@@ -6,7 +6,8 @@ on:
       - master
     paths:
       - 'backend/**'
-
+  workflow_dispatch:
+  
 jobs:
   # 定义一个任务，就叫“构建并推送”
   build-and-push:
